@@ -1,48 +1,53 @@
-class Bouton{
-  float x,y;
-  float w,h;
-  String text;
-  int R,G,B,Rh,Gh,Bh;
-  Bouton(){}
-  void setPosition(float x,float y,float w,float h){
+public class Bouton{
+  private float x,y;
+  private float w,h;
+  private String text;
+  private int R,G,B,Rh,Gh,Bh;
+  private int textColor;
+  private int xtext;
+  
+  public Bouton(){}
+  
+  public void setTextxPosition(int x){
+    xtext=x;
+  }
+  public void setPosition(float x,float y,float w,float h){
     this.x=x;
     this.y=y;
     this.w=w;
     this.h=h;
   }
-  void setText(String text){
+  
+  public void setText(String text){
     this.text=text;
   }
-  void setColor(int R,int G,int B){
+  
+  public void setColorh(int R,int G,int B){
+    Rh=R;
+    Gh=G;
+    Bh=B;
+  }
+  
+  public void setColor(int R){
+    this.R=R;
+    this.G=R;
+    this.B=R;
+  }
+  
+  public void setColor(int R,int G,int B){
     this.R=R;
     this.G=G;
     this.B=B;
-    if(R*5>255){
-      Rh=255;
-    }
-    else{
-      Rh=R*5;
-    }
-    if(G*5>255){
-      Gh=255;
-    }
-    else{
-      Gh=G*5;
-    }
-    if(B*5>255){
-      Bh=255;
-    }
-    else{
-      Bh=B*5;
-    }
   }
-  boolean hover(){ //souris en dessus
+  
+  private boolean hover(){ //souris en dessus
     if(mouseX>x && mouseX<x+w && mouseY>y && mouseY<y+h){
       return true;
     }
     return false;
   }
-  void display(){
+  
+  public void display(){
     if(hover()){
      fill(Rh,Gh,Bh);
     }
@@ -50,11 +55,18 @@ class Bouton{
       fill(R,G,B);
     }
     rect(x,y,w,h,15);
-    fill(255);
-    textSize(20);
-    text(text,x,y+h/2);
+    if(text!=null){
+      fill(textColor);
+      textSize(20);
+      text(text,xtext,y+h/2);
+    }
   }
-  boolean clicked(){
+  
+  public void setTextColor(int couleur){
+    textColor=couleur;
+  }
+  
+  public boolean clicked(){
     if(mousePressed && hover()){
       return true;
     }
