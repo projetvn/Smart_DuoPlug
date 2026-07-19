@@ -1,16 +1,16 @@
-class PinBox{
-  int x,y;
-  int tailleW=70;
-  int tailleH=80;
-  String valeur="";
-  boolean actif=false;
+public class PinBox{
+  private int x,y;
+  private int tailleW=70;
+  private int tailleH=80;
+  private String valeur="";
+  private boolean actif=false;
   
-  PinBox(int x, int y){
+  public PinBox(int x, int y){
     this.x=x;
     this.y=y;
   }
   
-  void afficher(){
+  public void afficher(){
     if(actif)
       stroke(127,119,221);
     else
@@ -24,13 +24,13 @@ class PinBox{
 
     if(valeur.length()>0){
       fill(255);
-      textAlign(CENTER,CENTER);
-      textSize(35);
-      text("●",x,y);
+      textAlign(CENTER,UP);
+      textSize(100);
+      text(".",x,y);
     }
   }
 
-  void cliquer(){
+  public void cliquer(){
     if(mouseX>x-tailleW/2 && mouseX<x+tailleW/2 && mouseY>y-tailleH/2 && mouseY<y+tailleH/2){
         actif=true;
     }
@@ -39,21 +39,19 @@ class PinBox{
     }
   }
 
-  void ajouterChiffre(char c){
+  public void ajouterChiffre(char c){
     if(actif && Character.isDigit(c) && valeur.length()==0){
       valeur+=c;
     }
   }
 
-
-  void supprimer(){
+  public void supprimer(){
     if(actif){
       valeur="";
     }
   }
   
-  String getValeur(){
+  public String getValeur(){
     return valeur;
   }
-
 }
