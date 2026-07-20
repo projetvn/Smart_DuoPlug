@@ -92,4 +92,5 @@ int login()
   ecran.setCursor(0, 0);
   ecran.println("Login reussi!");
   ecran.display();
+  return 1;
 }
