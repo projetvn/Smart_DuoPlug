@@ -13,7 +13,7 @@ PinCode::~PinCode()
 
 void PinCode::setPinCode(int p)
 {
-  PinCode = p;
+  pinCode = p;
   EEPROM.put(0, p);
 }
 
