@@ -6,12 +6,12 @@ Prise::Prise(){}
 Prise::~Prise(){}
 
 void Prise::allumer(){
-  pinMode(pin,HIGH);
+  digitalWrite(pin,HIGH);
   status=1;
 }
 
 void Prise::eteindre(){
-  pinMode(pin,LOW);
+  digitalWrite(pin,LOW);
   status=0;
 }
 
@@ -23,10 +23,18 @@ void Prise::setConsommation(double valeur){
   consommation=valeur;
 }
 
+void Prise::setTimOn(int t){
+  timeOn=t;
+}
+
 int Prise::getStatus(){
   return status;
 }
 
 double Prise::getConsommation(){
   return consommation;
+}
+
+int Prise::getTimeOn(){
+  return timeOn;
 }
