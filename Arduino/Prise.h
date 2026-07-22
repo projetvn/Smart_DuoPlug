@@ -7,6 +7,7 @@ class Prise{
     int status;//0 OFF 1 ON
     double consommation;
     int timeOn;
+    int debutOn;
 
   public:
     Prise();
@@ -14,11 +15,13 @@ class Prise{
     void allumer();
     void eteindre();
     void setPin(int pin);
-    void setConsommation(double valeur);
+    void setConsommation(int pinC);
     void setTimOn(int t);
+    void setDebutOn(int d);
     int getStatus();
     double getConsommation();
     int getTimeOn();
+    int getDebuOn();
 
 };
 

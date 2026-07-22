@@ -35,7 +35,7 @@ void creerPinCode()
     p.remove(p.length()-1);
     if(p.length()!=4)
     {
-      ecran.println("Le pin doit etre compose de 4 chiffre");
+      ecran.print(F("Le pin doit etre compose de 4 chiffre"));
       ecran.display();
       delay(2000);
       p.remove(0);
@@ -48,7 +48,7 @@ void creerPinCode()
   delay(500);
   ecran.clearDisplay();
   ecran.setCursor(0, 0);
-  ecran.println("Code pin cree avec succes!");
+  ecran.print(F("Code pin cree avec succes!"));
   ecran.display();
 }
 
@@ -58,11 +58,11 @@ int login()
   char c;
   ecran.clearDisplay();
   ecran.setCursor(0, 0);
-  ecran.println("Bienvenu dans la page de login");
+  ecran.print(F("Bienvenu dans la page de login"));
   ecran.display();
   do
   {
-    ecran.print("PIN (# pour valider): ");
+    ecran.print(F("PIN (# pour valider): "));
     ecran.display();
     while(p[p.length()-1]!='#')
     {
@@ -83,14 +83,14 @@ int login()
     {
       ecran.clearDisplay();
       ecran.setCursor(0, 0);
-      ecran.println("Code pin incorrect!!!");
+      ecran.print(F("Code pin incorrect!!!"));
       ecran.display();
     }
   }while (p.toInt()!=PIN.getPinCode());
   delay(500);
   ecran.clearDisplay();
   ecran.setCursor(0, 0);
-  ecran.println("Login reussi!");
+  ecran.print(F("Login reussi!\n"));
   ecran.display();
   return 1;
 }

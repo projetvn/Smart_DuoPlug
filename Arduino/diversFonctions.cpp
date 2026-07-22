@@ -1,50 +1,102 @@
-#include "diversFonctions.h"
+#include "WString.h"
+#include "wiring_private.h"
+#include "headers.h"
 #include "Arduino.h"
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 void menu()
 {
-  char choix, temp;
-  choix = ' ';
-  temp = ' ';
-  Menu :
-    ecran.clearDisplay();
-    ecran.setCursor(0, 0);
-    ecran.println("Menu principal");
+  int v;
+  v=0;
+  char c;
+  String choix;
+  choix="";
+  c = ' ';
+  MenuPrincipal :
+    if(v!=0)
+    {
+      ecran.clearDisplay();
+      ecran.setCursor(0, 0);
+      ecran.print(F("Choix invalide!!!\n"));
+      ecran.display();
+    }
+    else
+    {
+      ecran.clearDisplay();
+      ecran.setCursor(0, 0);
+    }
+    ecran.print(F("Menu principal\n"));
     ecran.display();
-    ecran.print(F("1.Allumer/Etteindre une prise\n.2.Voir l'etat d'une prise\n3.Parametres\n"));
+    ecran.print(F("1.Activer une prise\n2.Desactiver une prise\n.3.Voir l'etat d'une prise\n4.Parametres\n"));
     ecran.display();
     ecran.print(F("Votre choix (# pour valider) : "));
     ecran.display();
-    while(choix==' ' || temp!='#')
+
+    while(choix.length()==0 || choix[choix.length()-1]!='#')
     {
       clavier.ecrire();
-      temp = clavier.lire();
-      if(temp=='#' && choix==' ')
+      c = clavier.lire();
+      if(c!='v')
       {
-        ecran.clearDisplay();
-        ecran.setCursor(0, 0);
-        ecran.print(F("Entrer un chiffre!!"));
-        ecran.display();
-        ecran.print(F("1.Allumer/Etteindre une prise\n.2.Voir l'etat d'une prise\n3.Parametres\n"));
-        ecran.display();
-        ecran.print(F("Votre choix (# pour valider) : " ));
-        ecran.display();
-        temp=' ';
-      }
-      else if(temp!='#' && temp!=' ' && temp!= 'v')
-      {
-        choix = temp;
-        ecran.println(choix);
-        ecran.display();
+        choix.concat(c);
+        if(c!='#')
+        {
+          ecran.print(c);
+          ecran.display();
+        }
       }
     }
-
-    /*switch(choix)
+    c=choix[0];
+    choix.remove(0);
+    switch(c)
     {
-      cases '1':
+      case '1':
+        activationPrise();
+        break;
+      case '2':
+        desactivationPrise();
+        break;
 
+      case '3':
+        voirEtatPrise();
+        break;
+
+      case '4':
+        parametre();
+        break;
+
+      default:
+        v++;
+        goto MenuPrincipal;
     }
-    */
+    
+}
+
+void parametre()
+{
+
+}
+
+char choisir()
+{
+  char c;
+  String choix;
+  choix="";
+  c = ' ';
+  while(choix.length()==0 || choix[choix.length()-1]!='#')
+  {
+    clavier.ecrire();
+    c = clavier.lire();
+    if(c!='v')
+    {
+      choix.concat(c);
+      if(c!='#')
+      {
+        ecran.print(c);
+        ecran.display();
+      }
+    }
+  }
+  return choix[0];
 }
