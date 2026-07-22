@@ -1,4 +1,6 @@
 PinBox[] cases;
+String str;
+Bouton valider;
 
 void initialiserAuthentification(){
   cases=new PinBox[4];
@@ -10,8 +12,6 @@ void initialiserAuthentification(){
 }
 
 void afficherAuthentification(){
-  Bouton valider; 
-  int i; 
   valider=new Bouton(); 
   background(11,11,20); 
   fill(250); 
@@ -23,13 +23,13 @@ void afficherAuthentification(){
   valider.setTextColor(255); 
   valider.setText("Valider"); 
   valider.setTextxPosition(900); 
-  textAlign(CENTER); 
-  valider.setPosition(650,515,500,70); 
+  textAlign(CENTER);
+  valider.setPosition(650,515,500,70);
   valider.display();
   
   textSize(50); 
   text("Entrez votre code",900,200); 
-  fill(139,138,153); 
+  fill(139,138,153);
   textSize(20); 
   text("Code PIN a 4 chiffres, saisi au clavier",900,250);
 
@@ -71,11 +71,4 @@ void keyPressed(){
     else if(!cases[0].getValeur().equals(""))
       cases[0].supprimer();
   }
-}
-
-void mousePressed(){
-  cases[0].cliquer();
-  cases[1].cliquer();
-  cases[2].cliquer();
-  cases[3].cliquer();
 }
