@@ -135,7 +135,35 @@ void minuterie()
 
 void desactivationPrise()
 {
-
+  char c;
+  ecran.clearDisplay();
+  ecran.setCursor(0,0);
+  ecran.print(F("QUelle prise voulez vous desactiver?(1/2) : "));
+  ecran.display();
+  c = choisir();
+  if(c=='1')
+  {
+    p1.eteindre();
+    ecran.clearDisplay();
+    ecran.setCursor(0,0);
+    ecran.print(F("Prise 1 desactivee avec succes\n"));
+    ecran.display();
+  }
+  else if(c=='2')
+  {
+    p2.eteindre();
+    ecran.clearDisplay();
+    ecran.setCursor(0,0);
+    ecran.print(F("Prise 2 desactivee avec succes\n"));
+    ecran.display();
+  }
+  else
+  {
+    ecran.clearDisplay();
+    ecran.setCursor(0,0);
+    ecran.print(F("Choix invalide\n"));
+    ecran.display();
+  }
 }
 
 void voirEtatPrise()
@@ -151,9 +179,14 @@ void voirEtatPrise()
     ecran.clearDisplay();
     ecran.setCursor(0, 0);
     if(p1.getStatus()==1)
+    {
       ecran.print(F("Prise activee\n"));
+      ecran.display();
+    }
     else
+    {
       ecran.print(F("Prise desactivee\n"));
-    ecran.display();
+      ecran.display();
+    }
   }
 }
